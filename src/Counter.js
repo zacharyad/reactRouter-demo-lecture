@@ -7,12 +7,13 @@ import {connect} from 'react-redux'
 // }
 
 let Counter = (props) => {
-    console.log("********* ", props)
+    console.log("props: ",props)
     return(
-        <div style={{display: "flex", flexDirection: "column", fontFamily: 'monospace'}}>
+        <div style={{display: "flex", alignItems: 'center', flexDirection: "column", fontFamily: 'monospace'}}>
             <h1>Counter is {props.pizza}</h1>
-            <button onClick={() => props.counterOneIncrement()} style={{margin: '20px',borderRadius: "20px", width: '500px', height: "100px", fontSize: '20px'}} >Increment</button>
-            <button onClick={() => props.potato()} style={{margin: '20px',borderRadius: "20px", width: '500px', height: "100px", fontSize: '20px'}} >Decrement</button>
+            <button onClick={() => props.counterOneIncrement(Number(props.match.params.amount))} style={{margin: '20px',borderRadius: "20px", width: '500px', height: "100px", fontSize: '20px'}} >Increment</button>
+            <button onClick={() => props.potato(Number(props.match.params.amount))} style={{margin: '20px',borderRadius: "20px", width: '500px', height: "100px", fontSize: '20px'}} >Decrement</button>
+            <button onClick={() => props.history.push("/")}>Home</button>
         </div>
     )
 }
@@ -29,8 +30,8 @@ let mapStateToProps = (cat) => {
 // props.name-in-the obj
 let mapDispatchToProps = (dispatch) => {
     return {
-        counterOneIncrement: () => dispatch(increment()),
-        potato: () => dispatch(decrement())
+        counterOneIncrement: (amount) => dispatch(increment(amount)),
+        potato: (amount) => dispatch(decrement(amount))
     }
 }
 
