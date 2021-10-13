@@ -7,9 +7,9 @@ import {connect} from 'react-redux'
 // }
 
 let Counter = (props) => {
-    console.log("********* ", props)
+    console.log("********* Props ", props)
     return(
-        <div style={{display: "flex", flexDirection: "column", fontFamily: 'monospace'}}>
+        <div style={{display: "flex", alignItems: "center", flexDirection: "column", fontFamily: 'monospace'}}>
             <h1>Counter is {props.pizza}</h1>
             <button onClick={() => props.counterOneIncrement()} style={{margin: '20px',borderRadius: "20px", width: '500px', height: "100px", fontSize: '20px'}} >Increment</button>
             <button onClick={() => props.potato()} style={{margin: '20px',borderRadius: "20px", width: '500px', height: "100px", fontSize: '20px'}} >Decrement</button>
